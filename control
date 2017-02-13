@@ -1,0 +1,25 @@
+Source: fingerterm
+Section: admin
+Priority: optional
+Maintainer: JBBgameich <jbb.mail@gmx.de>
+Standards-Version: 3.9.8
+Homepage: https://git.merproject.org/mer-core/fingerterm
+Vcs-Git: git://git.merproject.org/mer-core/fingerterm.git
+Vcs-Browser: https://git.merproject.org/mer-core/fingerterm
+Build-Depends: debhelper (>= 9),
+               libqt5core5a, 
+               libqt5gui5, 
+               libqt5qml5, 
+               libqt5quick5
+
+Package: fingerterm
+Architecture: any
+Depends: qml-module-qtquick-xmllistmodel,
+         qml-module-qtquick-window2,   
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Terminal emulator for touch devices
+ Fingerterm was originally made for the mer / nemo project using QML and c++,
+ but it runs on every system supporting qt.
+ As the name already tells, it's optimized for touch devices, 
+ like phones and tablets.

@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+export LDFLAGS += -Wl,--as-needed
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	qmake -makefile MEEGO_EDITION=nemo
+
+.PHONY: override_dh_auto_test

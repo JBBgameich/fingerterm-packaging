@@ -8,6 +8,6 @@ export LDFLAGS += -Wl,--as-needed
 	dh $@
 
 override_dh_auto_configure:
-	qmake -makefile MEEGO_EDITION=nemo
+	qmake -makefile MEEGO_EDITION=debian
 
 .PHONY: override_dh_auto_test

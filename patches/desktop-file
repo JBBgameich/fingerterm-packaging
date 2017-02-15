@@ -1,0 +1,59 @@
+Description: Add debian desktop file
+ Change the icon name, add a description and other information to fingerterm.desktop and apply it if built with MEEGO_EDITION=debian.
+
+Last-Update: 2017-02-15
+
+--- fingerterm-1.3.3.orig/fingerterm.desktop
++++ fingerterm-1.3.3/fingerterm.desktop
+@@ -1,10 +1,5 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-Version=1.0
+-Name=FingerTerm
+-GenericName=FingerTerm
+-Comment=Terminal emulator
+-Exec=/usr/bin/invoker --single-instance --type=e /opt/fingerterm/bin/fingerterm
+-Terminal=false
+ Type=Application
+-Icon=/usr/share/icons/hicolor/80x80/apps/fingerterm.png
++Name=Terminal
++Exec=fingerterm
++Icon=icon-launcher-shell
+--- /dev/null
++++ fingerterm-1.3.3/fingerterm.desktop.debian
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Type=Application
++Name=Fingerterm
++GenericName=Terminal
++TryExec=fingerterm
++Exec=fingerterm
++Icon=utilities-terminal
++Terminal=false
++Categories=Qt;System;TerminalEmulator;
++
++Comment[de] = Zugriff auf die Befehlszeile
++Comment = Command line access
+--- fingerterm-1.3.3.orig/fingerterm.pro
++++ fingerterm-1.3.3/fingerterm.pro
+@@ -50,7 +50,7 @@ OTHER_FILES += \
+     qml/NotifyWin.qml \
+     qml/UrlWindow.qml \
+     qml/LayoutWindow.qml \
+-    qml/PopupWindow.qml
++    qml/PopupWindow.qml 
+ 
+ RESOURCES += \
+     resources.qrc
+@@ -63,4 +63,11 @@ contains(MEEGO_EDITION,nemo) {
+     desktopfile.path = /usr/share/applications
+     desktopfile.files = $${TARGET}.desktop
+     INSTALLS += desktopfile
++}
++
++contains(MEEGO_EDITION,debian) {
++    desktopfile.extra = cp $${TARGET}.desktop.debian $${TARGET}.desktop
++    desktopfile.path = /usr/share/applications
++    desktopfile.files = $${TARGET}.desktop
++    INSTALLS += desktopfile
+ }

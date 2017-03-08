@@ -7,10 +7,10 @@ Homepage: https://git.merproject.org/mer-core/fingerterm
 Vcs-Git: git://github.com/jbbgameich/fingerterm-packaging.git
 Vcs-Browser: https://github.com/jbbgameich/fingerterm-packaging/
 Build-Depends: debhelper (>= 9),
-               libqt5core5a, 
-               libqt5gui5, 
-               libqt5qml5, 
-               libqt5quick5
+               qt5-qmake,
+               qt5-default,
+               qtbase5-dev,
+               qtdeclarative5-dev
 
 Package: fingerterm
 Architecture: any

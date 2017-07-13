@@ -1,0 +1,47 @@
+From 46f741fa4a3215d44b1fafc328be77f8629a7366 Mon Sep 17 00:00:00 2001
+From: JBBgameich <jbbgameich@gmail.com>
+Date: Thu, 13 Jul 2017 12:39:56 +0200
+Subject: [PATCH] Add desktopfile for debian
+
+---
+ fingerterm.desktop.debian | 12 ++++++++++++
+ fingerterm.pro            |  7 +++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 fingerterm.desktop.debian
+
+diff --git a/fingerterm.desktop.debian b/fingerterm.desktop.debian
+new file mode 100644
+index 0000000..1b31198
+--- /dev/null
++++ b/fingerterm.desktop.debian
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Type=Application
++Name=Fingerterm
++GenericName=Terminal
++TryExec=fingerterm
++Exec=fingerterm
++Icon=utilities-terminal
++Terminal=false
++Categories=Qt;System;TerminalEmulator;
++
++Comment[de] = Zugriff auf die Befehlszeile
++Comment = Command line access
+diff --git a/fingerterm.pro b/fingerterm.pro
+index 0bb559e..5499782 100644
+--- a/fingerterm.pro
++++ b/fingerterm.pro
+@@ -89,3 +89,10 @@ contains(MEEGO_EDITION,nemo) {
+     desktopfile.files = $${TARGET}.desktop
+     INSTALLS += desktopfile
+ }
++
++contains(MEEGO_EDITION,debian) {
++    desktopfile.extra = cp $${TARGET}.desktop.debian $${TARGET}.desktop
++    desktopfile.path = /usr/share/applications
++    desktopfile.files = $${TARGET}.desktop
++    INSTALLS += desktopfile
++ }
+-- 
+2.13.2
+
